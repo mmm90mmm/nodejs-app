@@ -1,19 +1,29 @@
-const si = require('systeminformation');
+// Import required modules
+const express = require('express');
+const si = require('systeminformation');  // systeminformation package for hardware data
 
-module.exports = async (req, res) => {
+const app = express();
+const port = process.env.PORT || 3000;
+
+// Endpoint to get motherboard serial number
+app.get('/motherboard-info', async (req, res) => {
     try {
+        // Fetch motherboard info using systeminformation
         const baseboard = await si.baseboard();
-        
-        if (!baseboard.manufacturer || !baseboard.model || !baseboard.serial) {
-            return res.status(404).json({ error: 'Motherboard information is unavailable.' });
-        }
 
-        res.status(200).json({
+        // Respond with motherboard serial number
+        res.json({
             manufacturer: baseboard.manufacturer,
             model: baseboard.model,
             serial: baseboard.serial
         });
     } catch (error) {
-        res.status(500).json({ error: 'Failed to retrieve motherboard info. Please try again later.' });
+        // Handle errors
+        res.status(500).json({ error: 'Failed to retrieve motherboard info.' });
     }
-};
+});
+
+// Start the server
+app.listen(port, () => {
+    console.log(`Server is running on http://localhost:${port}`);
+});
