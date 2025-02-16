@@ -1,15 +1,1 @@
-{
-  "version": 2,
-  "builds": [
-    {
-      "src": "api/motherboard-info.js",
-      "use": "@vercel/node"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/api/motherboard-info",
-      "dest": "api/motherboard-info.js"
-    }
-  ]
-}
+
