@@ -1,17 +1,14 @@
 {
-  "name": "motherboard-api",
+  "name": "my-app",
   "version": "1.0.0",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
-  "description": "",
   "dependencies": {
-    "express": "^4.21.2",
-    "systeminformation": "^5.25.11"
-  }
+    "systeminformation": "^5.5.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "vercel dev"
+  },
+  "author": "",
+  "license": "ISC"
 }
